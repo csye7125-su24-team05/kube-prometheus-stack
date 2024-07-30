@@ -3835,6 +3835,12 @@ prometheus:
               [
                 "prometheus-kafka-prometheus-kafka-exporter.default.svc.cluster.local:9308",
               ]
+      - job_name: "postgres-exporter"
+        static_configs:
+          - targets:
+              [
+                "prometheus-postgres-prometheus-postgres-exporter.default.svc.cluster.local:80",
+              ]
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
