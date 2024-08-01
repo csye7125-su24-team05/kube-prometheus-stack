@@ -12,6 +12,7 @@ metadata:
 {{- end }}
   labels:
     app: {{ template "kube-prometheus-stack.name" $ }}-admission-patch
+    sidecar.istio.io/inject: "false"
     {{- include "kube-prometheus-stack.prometheus-operator-webhook.labels" $ | nindent 4 }}
 spec:
   ttlSecondsAfterFinished: {{ .Values.prometheusOperator.admissionWebhooks.patch.ttlSecondsAfterFinished }}
@@ -24,6 +25,7 @@ spec:
 {{- end }}
       labels:
         app: {{ template "kube-prometheus-stack.name" $ }}-admission-patch
+        sidecar.istio.io/inject: "false"
         {{- include "kube-prometheus-stack.prometheus-operator-webhook.labels" $ | nindent 8 }}
     spec:
       {{- if .Values.prometheusOperator.admissionWebhooks.patch.priorityClassName }}
